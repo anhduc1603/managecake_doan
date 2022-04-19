@@ -1,5 +1,6 @@
 package com.anhduc.managecake.controller;
 
+import com.anhduc.managecake.global.GlobalData;
 import com.anhduc.managecake.model.Category;
 import com.anhduc.managecake.service.CategoryService;
 import com.anhduc.managecake.service.ProductService;
@@ -19,6 +20,8 @@ public class HomeController {
 
     @GetMapping({"/","/home"})
     public String home(Model model){
+        model.addAttribute("cartCount", GlobalData.cart.size());
+
          return "index";
     }
 
@@ -26,6 +29,7 @@ public class HomeController {
     public String shop(Model model){
         model.addAttribute("categories",categoryService.getAllCategory());
         model.addAttribute("products",productService.getAllProduct());
+        model.addAttribute("cartCount",GlobalData.cart.size());
         return "shop";
     }
 
@@ -33,6 +37,7 @@ public class HomeController {
     @GetMapping("/shop/category/{id}")
     public String shopByCategory(@PathVariable int id, Model model){
         model.addAttribute("categories",categoryService.getAllCategory());
+        model.addAttribute("cartCount",GlobalData.cart.size());
         model.addAttribute("products",productService.getAllProductCategoryId(id));
         return "shop";
     }
@@ -40,7 +45,9 @@ public class HomeController {
     @GetMapping("/shop/viewproduct/{id}")
     public String viewProduct(@PathVariable int id, Model model){
         model.addAttribute("product",productService.getProductById(id).get());
+        model.addAttribute("cartCount",GlobalData.cart.size());
         return "viewProduct";
     }
+
 
 }
