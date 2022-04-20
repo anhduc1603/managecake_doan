@@ -5,14 +5,12 @@ import com.anhduc.managecake.model.Category;
 import com.anhduc.managecake.model.Product;
 import com.anhduc.managecake.service.CategoryService;
 import com.anhduc.managecake.service.ProductService;
-import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -51,9 +49,12 @@ public class AdminController {
 
     @PostMapping("admin/categories/add")
     public String postCatAdd(@ModelAttribute("category") Category category){
-       categoryService.addCategory(category);
+        categoryService.addCategory(category);
         return "redirect:/admin/categories";
     }
+
+
+
 
     @GetMapping("/admin/categories/delete/{id}")
     public String deleteCat(@PathVariable int id){

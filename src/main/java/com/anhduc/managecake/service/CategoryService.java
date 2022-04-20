@@ -20,6 +20,10 @@ public class CategoryService {
         categoryReponsitoy.save(category);
     }
 
+
+
+
+
     public void deleteCategoryById(int id){categoryReponsitoy.deleteById(id);}
 
     public Optional<Category> getCategoryById(int id){return categoryReponsitoy.findById(id);}
