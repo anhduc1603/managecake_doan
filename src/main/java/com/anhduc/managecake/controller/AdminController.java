@@ -5,14 +5,12 @@ import com.anhduc.managecake.model.Category;
 import com.anhduc.managecake.model.Product;
 import com.anhduc.managecake.service.CategoryService;
 import com.anhduc.managecake.service.ProductService;
-import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -33,20 +31,20 @@ public class AdminController {
 
     @GetMapping("/admin")
     public String adminHome(){
-        return "adminHome";
+        return "/home/adminHome";
     }
 
     @GetMapping("admin/categories")
     public String getCat(Model model){
         model.addAttribute("categories",categoryService.getAllCategory());
-       return "categories";
+       return "/categori/categories";
     }
 
 
     @GetMapping("admin/categories/add")
     public String getCatAdd(Model model){
         model.addAttribute("category",new Category());
-        return "categoriesAdd";
+        return "/categori/categoriesAdd";
     }
 
     @PostMapping("admin/categories/add")
@@ -76,14 +74,14 @@ public class AdminController {
     @GetMapping("admin/products")
     public String products(Model model){
             model.addAttribute("products" ,productService.getAllProduct() );
-            return "products";
+            return "/product/products";
     }
 
     @GetMapping("admin/products/add")
     public String productAddGet(Model model){
         model.addAttribute("productDTO" ,new ProductDTO());
         model.addAttribute("categories",categoryService.getAllCategory());
-        return "productsAdd";
+        return "/product/productsAdd";
     }
 
 
@@ -136,6 +134,6 @@ public class AdminController {
         model.addAttribute("categories",categoryService.getAllCategory());
         model.addAttribute("productDTO",productDTO);
 
-        return "productsAdd";
+        return "/product/productsAdd";
     }
 }

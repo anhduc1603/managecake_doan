@@ -27,7 +27,7 @@ public class User {
         @Email(message = "{enrors.invalid_email}")
     private String email;
 
-    @NotEmpty
+    //    @NotEmpty
     private String password;
 
     @ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
@@ -49,4 +49,5 @@ public class User {
     public User() {
 
     }
+
 }

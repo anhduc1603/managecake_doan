@@ -10,18 +10,20 @@
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
           integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
-    <title>Document</title>
-    
+    <title>Trang chủ</title>
+
 </head>
 <body>
 
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light" >
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
         <a class="navbar-brand" href="#">
-            <img th:src="@{/images/logo.png}"  src="../static/images/logo.png" width="auto" height="40" class="d-inline-block align-top" alt=""/>
+            <img alt="" class="d-inline-block align-top" height="40" src="../static/images/logo.png"
+                 th:src="@{/images/logo.png}" width="auto"/>
         </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler"
+                data-target="#navbarSupportedContent" data-toggle="collapse" type="button">
             <span class="navbar-toggler-icon"></span>
         </button>
 
@@ -53,9 +55,60 @@
 </nav>
 
 
+<section id="home-products">
+    <div class="wrapper">
+        <div class="inner">
+            <div class="title-text text-center">
+                <h3></h3>
+                <h2>Gateaux Mousse</h2>
+                <img alt="" src="../theme.hstatic.net/1000313040/1000406925/14/home_line_collection1c18b.png?v=1843">
+            </div>
+            <div class="grid-uniform" th:each="product : ${products}">
 
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<!--                    ANH 1-->
+                <div class="grid__item large--three-twelfths medium--four-twelfths small--six-twelfths">
+                    <div class="product--loop">
+                        <div class="product-img">
+                            <a href="products/caramel-and-chocolate-cake-mousse-vuong.html">
+                                <img alt="CARAMEL AND CHOCOLATE CAKE MOUSSE Vuông"
+                                     th:src="@{${'/productImages/' + product.imageName}}">
+
+                            </a>
+                        </div>
+                        <div class="product-title text-center">
+                            <a href="products/caramel-and-chocolate-cake-mousse-vuong.html">
+                                CARAMEL AND CHOCOLATE CAKE MOUSSE Vuông
+                            </a>
+                            <p>
+                                CM003
+                            </p>
+                        </div>
+                        <div class="product-price-actions clearfix">
+                            <div class="product-price">
+                                360,000₫
+                            </div>
+                            <div class="product-actions">
+
+                                <button class="btn add-to-cart " data-id="1073951018" type="button"><i
+                                        aria-hidden="true" class="fa fa-shopping-cart"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+    </div>
+</section>
+<script crossorigin="anonymous"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+<script crossorigin="anonymous"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script crossorigin="anonymous"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 </body>
 </html>
