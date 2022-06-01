@@ -8,6 +8,7 @@ public class ManagecakeApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(ManagecakeApplication.class, args);
+
     }
 
 }

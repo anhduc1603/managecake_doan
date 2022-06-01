@@ -27,7 +27,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/","/shop/**","/forgotpassword","/register","/h2-console/**").permitAll()
+                .antMatchers("/","/home","/shop/**","/forgotpassword","/register","/h2-console/**")
+                .permitAll()
                 .antMatchers("/admin/**").hasRole("ADMIN")
                 .anyRequest()
                 .authenticated()
@@ -71,7 +72,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     public void configure(WebSecurity web) throws Exception {
-        web.ignoring().antMatchers("/resources/**","/static/**","/images/**","/productimages/**",
+        web.ignoring().antMatchers("/resources/**","/static/**","/images/**","/productImages/**",
                 "/css/**","/js/**");
     }
 }

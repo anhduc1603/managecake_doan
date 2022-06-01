@@ -31,20 +31,20 @@ public class AdminController {
 
     @GetMapping("/admin")
     public String adminHome(){
-        return "/home/adminHome";
+        return "/admin/adminHome";
     }
 
     @GetMapping("admin/categories")
     public String getCat(Model model){
         model.addAttribute("categories",categoryService.getAllCategory());
-       return "/categori/categories";
+       return "/admin/categories/categories";
     }
 
 
     @GetMapping("admin/categories/add")
     public String getCatAdd(Model model){
         model.addAttribute("category",new Category());
-        return "/categori/categoriesAdd";
+        return "/admin/categories/categoriesAdd";
     }
 
     @PostMapping("admin/categories/add")
@@ -64,9 +64,9 @@ public class AdminController {
         Optional<Category> category = categoryService.getCategoryById(id);
         if(category.isPresent()){
             model.addAttribute("category",category.get());
-            return "categoriesAdd";
+            return "/admin/categories/categoriesAdd";
         }else{
-            return "404";
+            return "/error/error-404";
         }
     }
 
@@ -74,14 +74,14 @@ public class AdminController {
     @GetMapping("admin/products")
     public String products(Model model){
             model.addAttribute("products" ,productService.getAllProduct() );
-            return "/product/products";
+            return "/admin/product/products";
     }
 
     @GetMapping("admin/products/add")
     public String productAddGet(Model model){
         model.addAttribute("productDTO" ,new ProductDTO());
         model.addAttribute("categories",categoryService.getAllCategory());
-        return "/product/productsAdd";
+        return "/admin/product/productsAdd";
     }
 
 
@@ -134,6 +134,6 @@ public class AdminController {
         model.addAttribute("categories",categoryService.getAllCategory());
         model.addAttribute("productDTO",productDTO);
 
-        return "/product/productsAdd";
+        return "admin/product/productsAdd";
     }
 }

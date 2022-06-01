@@ -18,7 +18,7 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light" >
     <div class="container-fluid">
         <a class="navbar-brand" href="#">
-            <img th:src="@{/images/logo.png}"  src="../static/images/logo.png" width="auto" height="40" class="d-inline-block align-top" alt=""/>
+            <img th:src="@{/images/logo.png}" src="../../static/images/logo.png" width="auto" height="40" class="d-inline-block align-top" alt=""/>
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -40,7 +40,7 @@
                     <a class="nav-link" sec:authorize="isAuthenticated()" th:href="@{/logout}" href="#">logout</a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" th:href="@{/cart}" href="#">cart</a>
+                    <a class="nav-link" th:href="@{/templates/cart}" href="#">cart</a>
                 </li>
                 <li class="nav-item active">
                     <span class="nav-link" th:text="${cartCount}">0</span>
@@ -76,7 +76,8 @@
                                 <!-- First name -->
                                 <div class="md-form md-outline mb-0 mb-lg-4">
                                     <label for="firstName">First name</label>
-                                    <input type="text" id="firstName" required class="form-control mb-0 mb-lg-2">
+                                    <input type="text" id="firstName" name="firstName" required class="form-control mb-0 mb-lg-2">
+
                                 </div>
 
                             </div>
@@ -90,15 +91,10 @@
                                     <label for="lastName">Last name</label>
                                     <input type="text" id="lastName" required class="form-control">
                                 </div>
-
                             </div>
                             <!-- Grid column -->
-
                         </div>
                         <!-- Grid row -->
-
-
-
                         <!-- Country -->
                         <div class="d-flex flex-wrap">
                             <div class="select-outline position-relative w-100">
@@ -190,7 +186,7 @@
                             </li>
                         </ul>
 
-                        <form action="" method="post" th:action="@{/payNow}" >
+                        <form action="" method="post" th:action="@{/receipt}" >
                             <button type="submit"  class="btn btn-primary btn-block waves-effect waves-light">Pay Now</button>
                         </form>
 

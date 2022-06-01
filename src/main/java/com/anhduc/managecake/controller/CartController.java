@@ -1,6 +1,7 @@
 package com.anhduc.managecake.controller;
 
 import com.anhduc.managecake.global.GlobalData;
+import com.anhduc.managecake.model.Checkout;
 import com.anhduc.managecake.model.Product;
 import com.anhduc.managecake.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class CartController {
@@ -37,8 +39,12 @@ public class CartController {
     @GetMapping("/checkout")
     public String checkout(Model model){
         model.addAttribute("total",GlobalData.cart.stream().mapToDouble(Product::getPrice).sum());
-        return "checkout";
+        return "/cart/checkout";
     }
 
-
+    @PostMapping ("/receipt")
+    public String receipt(Checkout checkout, Model model){
+        model.addAttribute("firstName",checkout.getFirstName());
+        return "/cart/orderPlaced";
+    }
 }

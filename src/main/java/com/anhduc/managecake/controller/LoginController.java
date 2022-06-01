@@ -1,6 +1,7 @@
 package com.anhduc.managecake.controller;
 
 import com.anhduc.managecake.global.GlobalData;
+import com.anhduc.managecake.model.Category;
 import com.anhduc.managecake.model.Role;
 import com.anhduc.managecake.model.User;
 import com.anhduc.managecake.reponsitory.RoleReponsitory;
@@ -8,9 +9,7 @@ import com.anhduc.managecake.reponsitory.UserReponsitory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -18,6 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Controller
+
 public class LoginController {
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
@@ -29,15 +29,33 @@ public class LoginController {
     @GetMapping("/login")
     public String login(){
         GlobalData.cart.clear();
-        return "/user/login";
+        return "/account/login";
     }
+    
+    @PostMapping("/loginuser")
+    public String authWithHttpServletRequest(HttpServletRequest request,@ModelAttribute("user") User user) {
+        System.out.println("Authentication User");
+        try {
+            System.out.println(user.getEmail() + user.getPassword());
+            request.login(user.getEmail(), user.getPassword());
+            return "redirect:/shop";
+
+        } catch (ServletException e) {
+            System.out.println(e.getMessage());
+//
+        }
+        return "redirect:/shop";
+    }
+
+
     @GetMapping("/register")
     public String registerGet(){
-        return "/user/register";
+        return "/account/register";
     }
 
     @PostMapping("/register")
-    public String registerPost(@ModelAttribute("user")User user,HttpServletRequest request) throws ServletException {
+    public String registerPost(@ModelAttribute("user")User user,HttpServletRequest request)
+            throws ServletException {
             String password = user.getPassword();
             user.setPassword(bCryptPasswordEncoder.encode(password));
         List<Role> roles = new ArrayList<>();

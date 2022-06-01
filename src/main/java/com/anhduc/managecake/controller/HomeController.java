@@ -17,12 +17,14 @@ public class HomeController {
     @Autowired
     ProductService productService;
 
+
+    //Cần xem xét
     @GetMapping({"/","/home"})
     public String home(Model model){
+        model.addAttribute("categories",categoryService.getAllCategory());
         model.addAttribute("cartCount", GlobalData.cart.size());
         model.addAttribute("products",productService.getAllProduct());
-
-         return "test";
+         return "index";
     }
 
     @GetMapping("/shop")
@@ -30,7 +32,7 @@ public class HomeController {
         model.addAttribute("categories",categoryService.getAllCategory());
         model.addAttribute("products",productService.getAllProduct());
         model.addAttribute("cartCount",GlobalData.cart.size());
-        return "shop";
+        return "home/shop";
     }
 
 
@@ -39,14 +41,14 @@ public class HomeController {
         model.addAttribute("categories",categoryService.getAllCategory());
         model.addAttribute("cartCount",GlobalData.cart.size());
         model.addAttribute("products",productService.getAllProductCategoryId(id));
-        return "shop";
+        return "home/shop";
     }
 
     @GetMapping("/shop/viewproduct/{id}")
     public String viewProduct(@PathVariable int id, Model model){
         model.addAttribute("product",productService.getProductById(id).get());
         model.addAttribute("cartCount",GlobalData.cart.size());
-        return "/product/viewProduct";
+        return "/home/viewProduct";
     }
 
 
