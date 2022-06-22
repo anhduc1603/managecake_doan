@@ -31,7 +31,7 @@ public class LoginController {
         GlobalData.cart.clear();
         return "/account/login";
     }
-    
+
     @PostMapping("/loginuser")
     public String authWithHttpServletRequest(HttpServletRequest request,@ModelAttribute("user") User user) {
         System.out.println("Authentication User");
